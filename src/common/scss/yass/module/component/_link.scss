@@ -1,0 +1,135 @@
+// アイコン付きリンク
+//
+// Markup:
+// <a href="#" class="c-icon-link">アイコン付きリンク</a>
+//
+// Styleguide 3.1
+.c-icon-link:before {
+	content: "⇒ ";
+}
+
+// ページ内リンク(下向き)
+//
+// Markup:
+// <a href="#" class="c-down-link">ページ内リンク</a>
+//
+// Styleguide 3.2
+.c-down-link:before {
+	content: "↓ ";
+}
+
+// ページ内リンク(上向き)
+//
+// Markup:
+// <a href="#" class="c-up-link">ページ内リンク</a>
+//
+// Styleguide 3.3
+.c-up-link:before {
+	content: "↑ ";
+}
+
+// 別ウィンドウリンク
+//
+// Markup:
+// <a href="#" class="c-blank-link">別ウィンドウリンク</a>
+//
+// Styleguide 3.4
+.c-blank-link:after {
+	content: " □";
+}
+
+// ダウンロードリンク
+//
+// Markup:
+// <a href="#" class="c-download-link">ダウンロードリンク</a>
+//
+// Styleguide 3.5
+.c-download-link:after {
+	content: " [↓]";
+}
+
+// pdfリンク
+//
+// Markup:
+// <a href="#" class="c-pdf-link">PDFファイル名</a>
+//
+// Styleguide 3.6
+.c-pdf-link:after {
+	content: " (PDF)";
+}
+
+// ページトップリンク
+//
+// Markup:
+// <div class="c-page-top">
+// <p><a class="c-page-top__link" href="#page_top">ページの先頭へ戻る</a></p>
+// </div><!-- /.c-page-top -->
+//
+// Styleguide 3.7
+.c-page-top {
+	text-align: right;
+}
+
+// リンクリスト
+//
+// Markup:
+// <div class="c-links">
+// <p class="c-links__heading">目次</p>
+// <ul class="c-links__list">
+// <li><a href="#">ページ内リンク</a></li>
+// <li><a href="#">ページ内リンク</a>
+// <ul class="c-links__list">
+// <li><a href="#">ページ内リンク</a></li>
+// <li><a href="#">ページ内リンク</a></li>
+// </ul>
+// </li>
+// <li><a href="#">ページ内リンク</a></li>
+// </ul>
+// </div><!-- /.c-links -->
+//
+// Styleguide 3.8
+.c-links {
+	padding: 1.5em;
+	border: 1px solid #999999;
+	.c-links__list {
+		margin: 0;
+		padding: 0 0 0 1.5em;
+	}
+	.c-links__heading {
+		text-align: center;
+		font-weight: bold;
+		margin: 0 0 0.5em 0;
+	}
+}
+
+// 詳細リンクリスト
+//
+// 詳細リンクリストは、リストのネストはできません。
+//
+// Markup:
+// <div class="c-more-links">
+// <ul class="c-more-links__list">
+// <li><a href="#">詳しくはこちら</a></li>
+// <li><a href="#">詳しくはこちら</a></li>
+// <li><a href="#">詳しくはこちら</a></li>
+// </ul>
+// </div><!-- /.c-more-links -->
+//
+// Styleguide 3.9
+.c-more-links {
+	margin-top: 0.5em;
+	margin-bottom: 2em;
+	border-top: dashed 1px #dddddd;
+	.c-more-links__list {
+		margin: 0.3em 0 0 0;
+		text-align: right;
+		> li {
+			@include inline_block;
+			padding: 0 0 0 1em;
+		}
+	}
+}
+
+
+
+

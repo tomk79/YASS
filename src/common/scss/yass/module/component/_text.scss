@@ -1,0 +1,26 @@
+// エラー表示
+//
+// Markup:
+// <p class="c-error-text">この文言はエラー表示です。</p>
+//
+// Styleguide 4.1
+.c-error-text {
+	color: #ff0000;
+}
+
+// 注釈表示
+//
+// Markup:
+// <p class="c-notes-text">※この文言は注釈表示です。</p>
+//
+// Styleguide 4.2
+.c-notes-text {
+	color: #999999;
+}
+
+
+
+
+
+
+

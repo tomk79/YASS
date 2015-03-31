@@ -1,0 +1,58 @@
+// Grid
+//
+// gridのベースです。
+//
+// Markup:
+// <div class="c-grid">
+//  <div class="c-grid__item c-grid__item--3">1</div>
+//  <div class="c-grid__item c-grid__item--3">2</div>
+//  <div class="c-grid__item c-grid__item--3">3</div>
+//  <div class="c-grid__item c-grid__item--3">4</div>
+// </div>
+//
+// Styleguide 1.1
+.c-grid {
+	@include clearfix;
+}
+.c-grid__item {
+	float: left;
+	box-sizing: border-box;
+	background: #CCC;
+	color: #fff;
+}
+.c-grid__item--1 {
+	width: 8.333%;
+}
+.c-grid__item--2 {
+	width: 16.667%;
+}
+.c-grid__item--3 {
+	width: 25%;
+}
+.c-grid__item--4 {
+	width: 33.333%;
+}
+.c-grid__item--5 {
+	width: 41.666%;
+}
+.c-grid__item--6 {
+	width: 50%;
+}
+.c-grid__item--7 {
+	width: 58.333%;
+}
+.c-grid__item--8 {
+	width: 66.666%;
+}
+.c-grid__item--9 {
+	width: 75%;
+}
+.c-grid__item--10 {
+	width: 83.333%;
+}
+.c-grid__item--11 {
+	width: 91.666%;
+}
+.c-grid__item--12 {
+	width: 100%;
+}

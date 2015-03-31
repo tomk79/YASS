@@ -1,0 +1,47 @@
+// 通常ボタン
+//
+// Markup:
+// <a href="#" class="c-btn {$modifiers}">Button of a</a>
+//
+// .c-btn--sub - サブボタン
+// .c-btn--action - アクションボタン
+// .c-btn--strong - 強調ボタン
+// .c-btn--short - 小ボタン
+// .c-btn--long - 中ボタン
+// .c-btn--full - 大ボタン
+// .is-disabled - 非活性
+//
+// Styleguide 5.1
+.c-btn {
+	@include inline-block;
+	border-radius: 4px;
+	padding: 0 1em;
+	color: #fff;
+	text-align: center;
+	line-height: 42px;
+	background: #cccccc;
+	text-decoration: none;
+	// State
+	&.is-disabled {
+		opacity: 0.5;
+	}
+}
+.c-btn--sub {
+	background: #a3a3a3;
+}
+.c-btn--action {
+	background: #2e2e2e;
+}
+.c-btn--strong {
+	background: #a81d1b;
+}
+.c-btn--short {
+	width: 30%;
+}
+.c-btn--long {
+	width: 60%;
+}
+.c-btn--full {
+	width: 100%;
+}
+

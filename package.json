@@ -1,0 +1,19 @@
+{
+  "name": "STYLEGUIDE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-kss": "0.0.2",
+    "gulp-pleeease": "^1.2.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-ruby-sass": "^1.0.0-alpha.3",
+    "rimraf": "^2.3.2"
+  }
+}

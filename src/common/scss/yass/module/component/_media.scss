@@ -1,0 +1,129 @@
+// Media left
+//
+// modifiersはrightも共通
+//
+// Markup:
+//<div class="c-media">
+//<div class="c-media__left {$modifiers}">
+//<a href="#">
+//<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
+//</a>
+//</div>
+//<div class="c-media__body">
+//<p class="c-media__heading">Middle aligned media</p>
+//<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+//</div>
+//</div><!-- /.c-media -->
+//
+// .c-media--middle - Middle aligned media
+// .c-media--bottom - Bottom aligned media
+//
+// Styleguide 7.1
+
+// Media right
+//
+// Markup:
+//<div class="c-media">
+//<div class="c-media__body">
+//<p class="c-media__heading">Middle aligned media</p>
+//<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+//</div>
+//<div class="c-media__right {$modifiers}">
+//<a href="#">
+//<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
+//</a>
+//</div>
+//</div><!-- /.c-media -->
+//
+// Styleguide 7.2
+
+// Media float left
+//
+// Markup:
+//<div class="c-media c-media--float">
+//<div class="c-media__left">
+//<a href="#">
+//<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
+//</a>
+//</div>
+//<div class="c-media__body">
+//<p class="c-media__heading">Middle aligned media</p>
+//<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+//</div>
+//</div><!-- /.c-media -->
+//
+// Styleguide 7.3
+
+// Media float right
+//
+// Markup:
+//<div class="c-media c-media--float">
+//<div class="c-media__right">
+//<a href="#">
+//<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
+//</a>
+//</div>
+//<div class="c-media__body">
+//<p class="c-media__heading">Middle aligned media</p>
+//<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+//<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+//</div>
+//</div><!-- /.c-media -->
+//
+// Styleguide 7.4
+
+.c-media {
+	@include first_mt0;
+}
+.c-media,
+.c-media__body {
+	overflow: hidden;
+	zoom: 1;
+}
+.c-media__body {
+	width: 10000px;
+}
+.c-media__object {
+	display: block;
+}
+.c-media__right {
+	padding-left: 10px;
+}
+.c-media__left {
+	padding-right: 10px;
+}
+.c-media__right,
+.c-media__left,
+.c-media__body {
+	display: table-cell;
+	vertical-align: top;
+}
+.c-media__heading {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+.c-media__text {
+	margin-bottom: 0;
+}
+.c-media--middle {
+	vertical-align: middle;
+}
+.c-media--bottom {
+	vertical-align: bottom;
+}
+.c-media--float {
+	.c-media__left {
+		float: left;
+		display: block; // Cancel '.c-media__left'
+	}
+	.c-media__right {
+		float: right;
+		display: block; // Cancel '.c-media__right'
+	}
+	.c-media__body {
+		width: auto; // Cancel '.c-media__body'
+		overflow: visible; // Cancel '.c-media__body'
+		display: block; // Cancel '.c-media__body'
+	}
+}
