@@ -1,0 +1,7 @@
+// margin
+
+@mixin first_mt0 {
+	> :first-child {
+		margin-top: 0;
+	}
+}

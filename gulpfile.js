@@ -4,6 +4,12 @@ var sass = require('gulp-ruby-sass');
 var gulpkss = require('gulp-kss');
 var pleeease = require('gulp-pleeease');
 //var plumber = require('gulp-plumber');
+var spritesmith = require('gulp.spritesmith');
+
+//Clean out the current documentation folder
+gulp.task('clean', function (cb) {
+    rimraf('public/styleguide/**/*', cb);
+});
 
 gulp.task('sass', function () {
     return sass('src/common/scss/')
@@ -13,9 +19,20 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('public/common/css'));
 });
 
-//Clean out the current documentation folder
-gulp.task('clean', function (cb) {
-    rimraf('public/styleguide/**/*', cb);
+gulp.task('sprite', function () {
+    var spriteData = gulp.src('public/common/images/sprite/*.png')
+        .pipe(spritesmith({
+            imgName: 'sprite.png',
+            cssName: '_sprite.scss',
+            imgPath: '/common/images/sprite.png',
+            cssFormat: 'scss'
+        }));
+
+    spriteData.img
+        .pipe(gulp.dest('public/common/images/'));
+
+    spriteData.css
+        .pipe(gulp.dest('src/common/scss/yass/mixins/'));
 });
 
 gulp.task('kss', ['sass'], function () {
@@ -28,11 +45,11 @@ gulp.task('kss', ['sass'], function () {
         .pipe(gulp.dest('public/styleguide/'));
 });
 
-gulp.task('ple', ['sass'], function() {
+gulp.task('ple', ['sass'], function () {
     return gulp.src('public/common/css/*.css')
         .pipe(pleeease({
             'sass': true,
-            'autoprefixer': true,
+            'autoprefixer': {'browsers': ['last 3 versions', 'ie 8', 'ios 4', 'android 2.3']},
             'minifier': false,
             'mqpacker': true
         }))

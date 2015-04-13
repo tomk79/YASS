@@ -1,88 +1,113 @@
 // 注釈リスト
 //
 // Markup:
-// <ul class="c-notes-list">
-// <li class="c-notes-list__li">※リスト内容</li>
-// <li class="c-notes-list__li">※リスト内容</li>
-// <li class="c-notes-list__li">※リスト内容</li>
+// <ul class="c-list-notes">
+// <li>※リスト内容</li>
+// <li>※リスト内容</li>
+// <li>※リスト内容</li>
 // </ul>
 //
 // Styleguide 6.1
-.c-notes-list {}
-.c-notes-list__li {
-	list-style-type: none;
-	text-indent: -1em;
+.c-list-notes {
+	margin-left: 1em;
+	padding-left: 0;
+	> li {
+		list-style-type: none;
+		text-indent: -1em;
+	}
 }
 
 // リストマークがないリスト
 //
 // Markup:
-// <ul class="c-nomark-list">
-// <li class="c-nomark-list__li">リスト内容</li>
-// <li class="c-nomark-list__li">リスト内容</li>
-// <li class="c-nomark-list__li">リスト内容</li>
+// <ul class="c-list-unstyled">
+// <li>リスト内容</li>
+// <li>リスト内容</li>
+// <li>リスト内容</li>
 // </ul>
 //
 // Styleguide 6.2
-.c-nomark-list {
+.c-list-unstyled {
 	padding-left: 0;
-}
-.c-nomark-list__li {
-	list-style-type: none;
-	padding-left: 0;
+	> li {
+		list-style-type: none;
+		padding-left: 0;
+	}
 }
 
-// 水平並びリスト
+// リスト 水平並び
 //
 // Markup:
-// <ul class="c-horizontal-list">
-// <li class="c-horizontal-list__li">リスト内容</li>
-// <li class="c-horizontal-list__li">リスト内容</li>
-// <li class="c-horizontal-list__li">リスト内容</li>
+// <ul class="c-list-horizontal">
+// <li>リスト内容</li>
+// <li>リスト内容</li>
+// <li>リスト内容</li>
 // </ul>
 //
 // Styleguide 6.3
-.c-horizontal-list {
+.c-list-horizontal {
 	padding-left: 0;
-}
-.c-horizontal-list__li {
-	list-style-type: none;
-	padding-left: 0;
-	padding-right: 20;
-	display: inline;
+	> li {
+		list-style-type: none;
+		padding-left: 0;
+		padding-right: 20;
+		display: inline;
+	}
 }
 
 // 注釈定義・説明リスト
 //
 // Markup:
-// <dl class="c-notes-dl">
-// <dt class="c-notes-dl__dt">※語句</dt>
-// <dd class="c-notes-dl__dd">定義や説明テキスト。定義や説明テキスト。</dd>
-// <dt class="c-notes-dl__dt">※語句</dt>
-// <dd class="c-notes-dl__dd">定義や説明テキスト。定義や説明テキスト。</dd>
+// <dl class="c-dl-notes">
+// <dt>※語句</dt>
+// <dd>定義や説明テキスト。定義や説明テキスト。</dd>
+// <dt>※語句</dt>
+// <dd>定義や説明テキスト。定義や説明テキスト。</dd>
 // </dl>
 //
 // Styleguide 6.4
-.c-notes-dl {
+.c-dl-notes {
 	padding: 0;
 	margin-left: 0;
 	margin-right: 0;
 }
-.c-notes-dl__dt {
-	padding: 0;
-	margin: 0;
-	float: left;
-	clear: left;
-	border: 0 none;
-	font-weight: normal;
-}
-.c-notes-dl__dd {
-	padding: 0 0 0 5px;
-	margin: 0;
-	float: none;
-	font-weight: normal;
-	display: block;
-	overflow: hidden;
-	zoom: 100%;
-}
 
+// 注釈定義・説明リスト 水平並び
+//
+// Markup:
+// <dl class="c-dl-horizontal">
+// <dt>Description lists</dt>
+// <dd>A description list is perfect for defining terms.</dd>
+// <dt>Euismod</dt>
+// <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+// <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+// <dt>Malesuada porta</dt>
+// <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+// <dt>Felis euismod semper eget lacinia</dt>
+// <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+// </dl>
+//
+// Styleguide 6.5
+.c-dl-horizontal {
+	dt {
+		float: left;
+		width: 160px;
+		clear: left;
+		text-align: right;
+		@include text-overflow;
+	}
+	dd {
+		@include clearfix;
+		margin-left: 180px;
+	}
+	@include mq-sm {
+		dt {
+			float: none;
+			width: auto;
+			text-align: left;
+		}
+		dd {
+			margin-left: 0;
+		}
+	}
+}

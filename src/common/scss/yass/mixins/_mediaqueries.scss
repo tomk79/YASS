@@ -1,0 +1,15 @@
+// mediaqueries
+
+//タブレットなど端末向きのmixin
+@mixin mq-md {
+	@media (max-width: $screen-sm-max) {
+		@content;
+	}
+}
+
+//スマートフォンなど端末向きのmixin
+@mixin mq-sm {
+	@media (max-width: $screen-xs-max) {
+		@content;
+	}
+}

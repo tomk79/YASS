@@ -1,8 +1,18 @@
+// Core variables and mixins
+@import "yass/variables";
 @import "yass/mixins";
 
+// Reset and dependencies
+@import "yass/base/_normalize";
 @import "yass/base/_base";
 
+
 // Grid
+//
+// [Bootstrapのグリッドシステム](http://getbootstrap.com/css/#grid)をほぼそのまま流用している。<br>
+// 横幅の合計を12カラムとして数え、使用するパーツごとに何カラム分使って配置するかを指定する。<br>
+// l-row(行)、とl-col-**などのカラム数を入れて分割します。<br>
+// デバイスの画面サイズに応じて表示を別々に制御することもできます。
 //
 // Styleguide 1.
 @import "yass/layout/grid/_grid";
@@ -37,9 +47,25 @@
 // Styleguide 7.
 @import "yass/module/component/_media";
 
+// Embeds
+//
+// Styleguide 8.
+@import "yass/module/component/_embed";
+
+// Table
+//
+// Styleguide 9.
+@import "yass/module/component/_table";
+
+// Form
+//
+// Styleguide 10.
+@import "yass/module/component/_form";
+
 
 @import "yass/module/utility/_align";
 @import "yass/module/utility/_clearfix";
 @import "yass/module/utility/_margin";
 @import "yass/module/utility/_padding";
 @import "yass/module/utility/_float";
+@import "yass/module/utility/_image";

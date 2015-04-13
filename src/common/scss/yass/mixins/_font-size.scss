@@ -1,0 +1,29 @@
+// font-size
+
+@mixin font_xxlarge {
+	font-size: 150%;
+}
+
+@mixin font_xlarge {
+	font-size: 123%;
+}
+
+@mixin font_large {
+	font-size: 108%;
+}
+
+@mixin font_medium {
+	font-size: 100%;
+}
+
+@mixin font_small {
+	font-size: 85%;
+}
+
+@mixin font_xsmall {
+	font-size: 77%;
+}
+
+@mixin font_xxsmall {
+	font-size: 60%;
+}

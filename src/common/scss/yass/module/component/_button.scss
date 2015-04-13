@@ -1,7 +1,10 @@
 // 通常ボタン
 //
 // Markup:
-// <a href="#" class="c-btn {$modifiers}">Button of a</a>
+// <a class="c-btn {$modifiers}" href="#" role="button">Link</a>
+// <button class="c-btn {$modifiers}" type="submit">Button</button>
+// <input class="c-btn {$modifiers}" type="button" value="Input">
+// <input class="c-btn {$modifiers}" type="submit" value="Submit">
 //
 // .c-btn--sub - サブボタン
 // .c-btn--action - アクションボタン
@@ -21,6 +24,9 @@
 	line-height: 42px;
 	background: #cccccc;
 	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid transparent;
+	box-sizing: border-box;
 	// State
 	&.is-disabled {
 		opacity: 0.5;
@@ -36,7 +42,7 @@
 	background: #a81d1b;
 }
 .c-btn--short {
-	width: 30%;
+	width: 20%;
 }
 .c-btn--long {
 	width: 60%;
