@@ -46,7 +46,7 @@ gulp.task('kss', ['sass'], function () {
             templateDirectory: 'src/common/template/'
             //kss: Options supported by KSS-Node (https://github.com/hughsk/kss-node)
         }))
-        .pipe(gulp.dest('public/styleguide/'));Modifier
+        .pipe(gulp.dest('public/styleguide/'));
 });
 
 gulp.task('ple', ['sass'], function () {
