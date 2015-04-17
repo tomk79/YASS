@@ -253,7 +253,7 @@ yass
 ```
 
 ## 基本設計
-[SASS](http://sass-lang.com/)のplaceholder selectorを利用(@extend)したシングルクラス設計が基本になっています。
+[Sass](http://sass-lang.com/)のplaceholder selectorを利用(@extend)したシングルクラス設計が基本になっています。
 
 次のようなbuttonモジュールがあったとします。
 
