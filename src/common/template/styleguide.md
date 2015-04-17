@@ -196,8 +196,8 @@ yass
 // ==========================================================================
 // variables mixin
 // ==========================================================================
-@import "yass/variables";
-@import "yass/mixins";
+@import "yass/_variables";
+@import "yass/_mixins";
 
 // ==========================================================================
 // base
@@ -272,22 +272,21 @@ yass
 <a href="#save" class="c-button c-button--primary">Button</a>
 ```
 
-YASSの構想では、このようなマルチクラスパターンを基本使用せずに、次のようなextendによるシングルクラスパターンで設計していきます。
+YASSの構想では、このようなマルチクラスパターンを基本使用*せずに、次のようなextendによるシングルクラスパターンで設計していきます。
 
-*Note:*
-マルチクラスパターンを用いた方が柔軟な設計が可能な場合などは使用してもよい。
+*マルチクラスパターンを用いた方が柔軟な設計が可能な場合などは使用してもよい。
 
 ```scss
-%button {
+%def-button {
   display: inline-block;
   padding: 0.5em 1em;
   cursor: pointer;
 }
 .c-button {
-  @extend %button
+  @extend %def-button
   background-color: #CCAA00;
 }
-.c-button-primary {
+.c-button--primary {
   @extend %button
   background-color: #FFCC00;
 }
@@ -301,10 +300,11 @@ YASSの構想では、このようなマルチクラスパターンを基本使�
 // .c-button {
 //   background-color: #CCAA00;
 // }
-// .c-button-primary {
+// .c-button--primary {
 //   background-color: #FFCC00;
 // }
 ```
+同じplaceholder selectorを継承しているクラスは基本そのクラスのModifierとして定義する。
 
 ```html
 <a href="#save" class="c-button">Button</a>
