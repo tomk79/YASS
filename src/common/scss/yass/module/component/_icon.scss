@@ -1,0 +1,6 @@
+/* Sample
+$sprites_icons_retina_map_kana: sprite-map("icon/kana*/
+/*.png");
+$sprites_icons_retina_map_img: sprite-url($sprites_icons_retina_map_kana);
+@include output-css-from-sprite($sprites_icons_retina_map_kana, 2);
+*/

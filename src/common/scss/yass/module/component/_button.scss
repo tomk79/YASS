@@ -1,28 +1,11 @@
-// 通常ボタン
-//
-// Markup:
-// <a class="c-btn {$modifiers}" href="#" role="button">Link</a>
-// <button class="c-btn {$modifiers}" type="submit">Button</button>
-// <input class="c-btn {$modifiers}" type="button" value="Input">
-// <input class="c-btn {$modifiers}" type="submit" value="Submit">
-//
-// .c-btn--sub - サブボタン
-// .c-btn--action - アクションボタン
-// .c-btn--strong - 強調ボタン
-// .c-btn--short - 小ボタン
-// .c-btn--long - 中ボタン
-// .c-btn--full - 大ボタン
-// .is-disabled - 非活性
-//
-// Styleguide 5.1
-.c-btn {
+// placeholder selector
+%def-btn {
 	@include inline-block;
 	border-radius: 4px;
 	padding: 0 1em;
 	color: #fff;
 	text-align: center;
 	line-height: 42px;
-	background: #cccccc;
 	text-decoration: none;
 	cursor: pointer;
 	border: 1px solid transparent;
@@ -32,22 +15,83 @@
 		opacity: 0.5;
 	}
 }
-.c-btn--sub {
-	background: #a3a3a3;
-}
-.c-btn--action {
-	background: #2e2e2e;
-}
-.c-btn--strong {
-	background: #a81d1b;
-}
-.c-btn--short {
+%def-btn--short {
 	width: 20%;
 }
-.c-btn--long {
+%def-btn--long {
 	width: 60%;
 }
-.c-btn--full {
+%def-btn--full {
 	width: 100%;
 }
+
+// 通常ボタン
+//
+// Markup:
+// <a class="c-btn" href="#" role="button">Link</a>
+// <button class="c-btn" type="submit">Button</button>
+// <input class="c-btn" type="button" value="Input">
+// <input class="c-btn" type="submit" value="Submit">
+//
+// Styleguide 5.1
+
+// 通常ボタン 非活性
+//
+// 非活性時はis-disabledを付与すること。<br>
+// is-disabledは以下の通常ボタン全てで使用することができる。
+//
+// Markup:
+// <button class="c-btn is-disabled" type="submit" disabled>Button</button>
+// <input class="c-btn is-disabled" type="button" value="Input" disabled>
+// <input class="c-btn is-disabled" type="submit" value="Submit" disabled>
+//
+// Styleguide 5.2
+.c-btn {
+	@extend %def-btn;
+	background: #cccccc;
+}
+
+// 通常ボタン ショート
+//
+// Markup:
+// <a class="c-btn--short" href="#" role="button">Link</a>
+// <button class="c-btn--short" type="submit">Button</button>
+// <input class="c-btn--short" type="button" value="Input">
+// <input class="c-btn--short" type="submit" value="Submit">
+//
+// Styleguide 5.3
+.c-btn--short {
+	@extend %def-btn;
+	@extend %def-btn--short;
+}
+
+// 通常ボタン ロング
+//
+// Markup:
+// <a class="c-btn--long" href="#" role="button">Link</a>
+// <button class="c-btn--long" type="submit">Button</button>
+// <input class="c-btn--long" type="button" value="Input">
+// <input class="c-btn--long" type="submit" value="Submit">
+//
+// Styleguide 5.4
+.c-btn--long {
+	@extend %def-btn;
+	@extend %def-btn--long;
+}
+
+// 通常ボタン フル
+//
+// Markup:
+// <a class="c-btn--full" href="#" role="button">Link</a>
+// <button class="c-btn--full" type="submit">Button</button>
+// <input class="c-btn--full" type="button" value="Input">
+// <input class="c-btn--full" type="submit" value="Submit">
+//
+// Styleguide 5.5
+.c-btn--full {
+	@extend %def-btn;
+	@extend %def-btn--full;
+}
+
+
 

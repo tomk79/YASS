@@ -1,33 +1,11 @@
-// Embeds responsive 4:3画面比率
-//
-// Credit: Nicolas Gallagher and SUIT CSS.
-//
-// Markup:
-// <div class="c-embed-responsive c-embed-responsive--4by3">
-// <iframe class="c-embed-responsive__item" width="420" height="315" src="https://www.youtube.com/embed/JBkp2q9eILU" frameborder="0" allowfullscreen></iframe>
-// </div>
-//
-// Styleguide 8.1
-
-// Embeds responsive 16:9画面比率
-//
-// Credit: Nicolas Gallagher and SUIT CSS.
-//
-// Markup:
-// <div class="c-embed-responsive c-embed-responsive--16by9">
-// <iframe class="c-embed-responsive__item" width="854" height="510" src="https://www.youtube.com/embed/JBkp2q9eILU" frameborder="0" allowfullscreen></iframe>
-// </div>
-//
-// Styleguide 8.2
-
-.c-embed-responsive {
+// placeholder selector
+%def-embed-responsive {
 	position: relative;
 	display: block;
 	height: 0;
 	padding: 0;
 	overflow: hidden;
 
-	.c-embed-responsive__item,
 	iframe,
 	embed,
 	object,
@@ -41,13 +19,51 @@
 		border: 0;
 	}
 }
-
-// Modifier class for 16:9 aspect ratio
-.c-embed-responsive--16by9 {
+%def-embed-responsive__item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	border: 0;
+}
+%def-embed-responsive--4by3 {
+	padding-bottom: 75%;
+}
+%def-embed-responsive--16by9 {
 	padding-bottom: 56.25%;
 }
 
-// Modifier class for 4:3 aspect ratio
+// Embeds responsive 4:3画面比率
+//
+// Credit: Nicolas Gallagher and SUIT CSS.
+//
+// Markup:
+// <div class="c-embed-responsive--4by3">
+// <iframe class="c-embed-responsive__item" width="420" height="315" src="https://www.youtube.com/embed/JBkp2q9eILU" frameborder="0" allowfullscreen></iframe>
+// </div>
+//
+// Styleguide 8.1
 .c-embed-responsive--4by3 {
-	padding-bottom: 75%;
+	@extend %def-embed-responsive;
+	@extend %def-embed-responsive--4by3;
+}
+
+// Embeds responsive 16:9画面比率
+//
+// Credit: Nicolas Gallagher and SUIT CSS.
+//
+// Markup:
+// <div class="c-embed-responsive--16by9">
+// <iframe class="c-embed-responsive__item" width="854" height="510" src="https://www.youtube.com/embed/JBkp2q9eILU" frameborder="0" allowfullscreen></iframe>
+// </div>
+//
+// Styleguide 8.2
+.c-embed-responsive--16by9 {
+	@extend %def-embed-responsive;
+	@extend %def-embed-responsive--16by9;
+}
+.c-embed-responsive__item {
+	@extend %def-embed-responsive__item;
 }

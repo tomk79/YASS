@@ -1,0 +1,31 @@
+/* css sprite */
+
+@mixin background_size($val) {
+	background-size: $val;
+}
+
+@mixin sprite-background($map, $name, $pixelRaito: 1) {
+	background-image: $map;
+	background-repeat: none;
+	$spritePath: sprite-path($map);
+	$spriteWidth: round(image-width($spritePath) / $pixelRaito);
+	$spriteHeight: round(image-height($spritePath) / $pixelRaito);
+	@include background_size($spriteWidth $spriteHeight);
+	$pos: sprite-position($map, $name);
+	background-position: (nth($pos, 1) / $pixelRaito) (nth($pos, 2) / $pixelRaito);
+}
+
+@mixin output-css-from-sprite($map, $pixelRaito: 1, $placeHolder: false) {
+	$dirName: sprite-map-name($map);
+	@each $name in sprite-names($map) {
+		@if $placeHolder {
+			%#{$dirName}-#{$name} {
+				@include sprite-background($map, $name, $pixelRaito);
+			}
+		} @else {
+			.#{$dirName}-#{$name} {
+				@include sprite-background($map, $name, $pixelRaito);
+			}
+		}
+	}
+}

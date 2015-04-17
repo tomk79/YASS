@@ -1,8 +1,41 @@
-**YASS**は、[FESS](http://tomk79.github.io/FESS/)に[SMACSS](https://smacss.com/ja)、[BEM](http://bem.info/)のコンセプトを取り入れた、CSSフレームワークです。
+**YASS**は、[FESS](http://tomk79.github.io/FESS/)に[SMACSS](https://smacss.com/ja)、[BEM](http://bem.info/)のコンセプトを取り入れたCSSの基本定義集です。
 
-## 基本原則
+## Install
 
-YASSはSMACSSのカテゴリー分類を拝借し次の5つのカテゴリーで構成されます。
+### gem
+
+[Sass >=3.4](http://sass-lang.com/install).を使用します。
+Updateまたはinstallを行ってください。
+
+```
+$ gem update sass
+```
+
+```
+$ gem install sass
+```
+
+### npm
+
+[npm](https://www.npmjs.com/)を使用して[Node.js](https://nodejs.org/)のモジュールをインストールします。
+
+```
+$ npm install
+```
+
+### Tasks
+
+[gulp](http://gulpjs.com/)を使用します。
+
+```
+$ gulp
+```
+
+# CSS
+
+## カテゴライズ
+
+SMACSSのカテゴリー分類を拝借し次の5つのカテゴリーで構成されます。
 
 1. Base - reset/normalize/base...
 2. Layout
@@ -31,7 +64,7 @@ Baseの中にクラスを指定したスタイルを定義してはいけませ�
 
 ### Module
 
-OOCSSのコンセプトを元に、プロジェクトにおける繰り返されるビジュアルパターンをすべて**Module**と定義します。
+プロジェクトにおける繰り返されるビジュアルパターンをすべて**Module**と定義します。
 
 YASSでのモジュールは、さらに次のレイヤーに分けられます。
 
@@ -39,11 +72,9 @@ YASSでのモジュールは、さらに次のレイヤーに分けられます�
 
 再利用できるパターンとして、小さな単位のモジュールを定義します。
 
-一般的によく使われるパターンであり、例えば[BootstrapのComponentカテゴリ](http://getbootstrap.com/components/)などに見られる`button`などが該当します。
-
 #### 2. Utility
 
-Componentのモディファイアで解決することが難しい・適切では無い、わずかなスタイルの調整のための便利クラスなどを定義します。
+わずかなスタイルの調整のための便利クラスなどを定義します。
 
 clearfixテクニックのためのルールセットが定義されているヘルパークラスも、このレイヤーに含めます。
 
@@ -74,7 +105,7 @@ YASSでは、オリジナルのBEMのシンタックスではなく、[MindBEMdi
 .block--modifier {}
 ```
 
-Modifierの命名の派生パターンとして、JavaScriptで操作されるような「状態」を表すようなModifierについては、SMACSSの**State**パターンの命名を拝借し、'is-*'プレフィックスを付与し、`.is-active`というようにすることもできます。
+JavaScriptで操作されるような「状態」を表すようなModifierについては、SMACSSの**State**パターンの命名を拝借し、'is-*'プレフィックスを付与し、`.is-active`というようにすることもできます。
 
 ```html
 <button class="c-button is-active">Save</button>
@@ -99,29 +130,27 @@ Modifierの命名の派生パターンとして、JavaScriptで操作される�
 - Theme   - `.t-*`
 - State   - `.is-*`
 
-*Note:*  
-これらの命名規則は、あなたのプロジェクトが持つオリジナルの命名規則に従い、キャメルケースなどを組み合わせたものでも構いませんが、必ず**命名に一貫性を保つ**ようにしてください。
-
 ## ファイル・ディレクトリ構成
-
-基本原則のレイヤー構成に従い、下記のような構成を前提とします。
-
-SassやStylusのようなCSSプリプロセッサやビルドツールを使ってCSSファイルを結合できる環境にあれば、次のようにディレクトリを分割して管理することを推奨します。
-次の例は、Sassを採用した場合の例です。
 
 ```
 yass
+├── _variables.scss
+├── _mixins.scss
 ├── mixins
-│   └── _mixin.scss
+│   ├── _opacity.scss
+│   ├── _mediaqueries.scss
+│   └── ...
 ├── base
+│   ├── _normalize.scss
 │   ├── _base.scss
-│   └── _reset.scss
+│   └── ...
 ├── layout
 │   ├── structure
 │   │   ├── _header.scss
 │   │   ├── _footer.scss
 │   │   ├── _main.scss
-│   │   └── _sidebar.scss
+│   │   ├── _sidebar.scss
+│   │   └── ...
 │   └── grid
 │       └── _grid.scss
 ├─── module
@@ -129,36 +158,53 @@ yass
 │   │   ├── _button.scss
 │   │   ├── _dialog.scss
 │   │   ├── _grid.scss
-│   │   └── _media.scss
+│   │   ├── _media.scss
+│   │   └── ...
 │   └── utility
 │       ├── _align.scss
 │       ├── _clearfix.scss
 │       ├── _margin.scss
 │       ├── _position.scss
 │       ├── _size.scss
-│       └── _text.scss
+│       ├── _text.scss
+│       └── ...
 └── theme
-    └── _color.scss
+    ├── _color.scss
+    └── ...
 ```
+### _variables.scss
+
+プロジェクトで使用する基本的な変数が定義されているファイル。
+
+### _mixins.scss
+
+各mixinファイルをincludeしたファイル。
+
+### mixinsディレクトリ
+
+各mixinファイルが格納されるディレクトリ
+
+### base、layout、module、theme
+
+上記を参考
 
 モジュール単位でファイルを分割することによって、ページ単位またはプロジェクト単位でのモジュールの追加・削除の管理が容易になります。
 
 これらを統括するための`style.scss`のようなファイルからは次のように参照します。
 
-```scss
-
+```style.scss
 // ==========================================================================
-// mixin
+// variables mixin
 // ==========================================================================
-
-@import "YASS/mixins";
+@import "yass/variables";
+@import "yass/mixins";
 
 // ==========================================================================
 // base
 // ==========================================================================
+@import "yass/base/_normalize";
+@import "yass/base/_base";
 
-@import "YASS/base/_base";
-@import "YASS/base/_reset";
 
 // ==========================================================================
 // Layout
@@ -167,15 +213,15 @@ yass
 // -----------------------------------------------------------------
 // Structure
 // -----------------------------------------------------------------
-@import "YASS/layout/structure/_header";
-@import "YASS/layout/structure/_footer";
-@import "YASS/layout/structure/_main";
-@import "YASS/layout/structure/_sidebar";
+@import "yass/layout/structure/_header";
+@import "yass/layout/structure/_footer";
+@import "yass/layout/structure/_main";
+@import "yass/layout/structure/_sidebar";
 
 // -----------------------------------------------------------------
 // Grid
 // -----------------------------------------------------------------
-@import "YASS/layout/grid/_grid";
+@import "yass/layout/grid/_grid";
 
 // ==========================================================================
 // Module
@@ -185,32 +231,116 @@ yass
 // Component
 // -----------------------------------------------------------------
 
-@import "YASS/module/component/_button";
-@import "YASS/module/component/_dialog";
-@import "YASS/module/component/_media";
+@import "yass/module/component/_button";
+@import "yass/module/component/_dialog";
+@import "yass/module/component/_media";
 
 // -----------------------------------------------------------------
 // Utility
 // -----------------------------------------------------------------
 
-@import "YASS/module/utility/_align";
-@import "YASS/module/utility/_clearfix";
-@import "YASS/module/utility/_margin";
-@import "YASS/module/utility/_position";
-@import "YASS/module/utility/_size";
+@import "yass/module/utility/_align";
+@import "yass/module/utility/_clearfix";
+@import "yass/module/utility/_margin";
+@import "yass/module/utility/_position";
+@import "yass/module/utility/_size";
 
 // ==========================================================================
 // Theme
 // ==========================================================================
 
-@import "YASS/theme/_theme";
+@import "yass/theme/_theme";
 ```
 
-### Layout、Module、Themeのカスケーディング
+## 基本設計
+[SASS](http://sass-lang.com/)のplaceholder selectorを利用(@extend)したシングルクラス設計が基本になっています。
+
+次のようなbuttonモジュールがあったとします。
+
+```scss
+.c−button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+.c-button--primary {
+  background-color: #CCAA00;
+}
+```
+
+```html
+<a href="#save" class="c-button c-button--primary">Button</a>
+```
+
+YASSの構想では、このようなマルチクラスパターンを基本使用せずに、次のようなextendによるシングルクラスパターンで設計していきます。
+
+*Note:*
+マルチクラスパターンを用いた方が柔軟な設計が可能な場合などは使用してもよい。
+
+```scss
+%button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+.c-button {
+  @extend %button
+  background-color: #CCAA00;
+}
+.c-button-primary {
+  @extend %button
+  background-color: #FFCC00;
+}
+
+// Compiled
+// .c-button,.c-button-primary {
+//   display: inline-block;
+//   padding: 0.5em 1em;
+//   cursor: pointer;
+// }
+// .c-button {
+//   background-color: #CCAA00;
+// }
+// .c-button-primary {
+//   background-color: #FFCC00;
+// }
+```
+
+```html
+<a href="#save" class="c-button">Button</a>
+<a href="#save" class="c-button-primary">Button</a>
+```
+
+### CSSプリプロセッサのExtend
+
+placeholder selectorによる@extendは、原則そのモジュールで完結する継承以外では利用を禁止します。
+
+カテゴリーやレイヤー超えてextendによる継承をおこなった場合、YASSの構成・設計は破綻し、カスケーディングルールも複雑にしてしまう可能性があるためです。
+
+以下は例外として、許容されるパターンをあげます。
+
+#### ThemeによるExtend
+
+```html
+<a href="#" class="c-btn">ボタン</a>
+<h2 class="c-heding2">見出し</h2>
+```
+
+```scss
+%t-gradient-gray {
+  background-image: linear-gradient(top, #F2F2F2, #C9C9C9);
+}
+.c-btn {
+  @extend %t-gradient-gray
+}
+.c-heding2 {
+  @extend %t-gradient-gray
+}
+```
+
+## Layout、Module、Themeのカスケーディング
 
 原則として、モジュール間のカスケーディング、他のモジュールを親とするセレクタを用いたカスケーディングは**禁止**とします。
-
-特に同一レイヤーにおけるモジュール間のカスケーディング、例えば、次のような複数のセレクタを用いたカスケーディングは好ましくありません。
 
 ```css
 // Component
@@ -231,183 +361,18 @@ yass
 ```
 
 なぜならば、そのレイヤーにおいて、特定のモジュールに依存することなく、モジュールとして独立して再利用できるべきであり、混在させることによって他の開発者が予想しない挙動になるべきではないためです。
-次のように**Element**や、Componentレイヤーの**Modifier**によって拡張することによって解決することができる場合があります。
-
-#### ComponentのModifier
-
-```html
-<div class="c-media">
-  <img src="user.jpg" class="c-media__image">
-  <div class="c-media__body">
-    <div class="c-button c-button--rev">...</div>
-  </div>
-</div>
-```
-
-```css
-// Component
-.c-button {
-  float: left;
-  margin-right: 10px;
-}
-
-.c-button--rev {
-  float: right;
-  margin-right: 0; // Cancel 'c-button' value
-  margin-left: 10px;
-}
-```
-
-このように解決できた場合には、詳細度を強くすることを防ぐことができます。
-
-ただし以下のように他のコンポーネントに依存するようなModifierを作る事は**禁止**とします。
-
-#### 他のコンポーネントに依存するModifier
-
-```html
-<div class="c-media">
-  <img src="user.jpg" class="c-media__image">
-  <div class="c-media__body">
-    <div class="c-button c-button--abs">...</div>
-  </div>
-</div>
-```
-
-```css
-// Component
-.c-media {
-  position: relative;
-}
-
-.c-button--abs {
-  position: absolute; //.c-mediaに依存している。
-  top: 0;
-  right: 0;
-}
-```
-
-上記の様な場合はBlockにelementを追加し拡張することによって解決することが望ましいです。
-
-#### Blockのelement
-
-```html
-<div class="c-media">
-  <img src="user.jpg" class="c-media__image">
-  <div class="c-media__body">
-    <div class="c-media__abs c-button">...</div>
-  </div>
-</div>
-```
-
-```css
-// Component
-.c-media {
-  position: relative;
-}
-
-.c-media__abs {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-```
 
 例外として、Themeカテゴリーにおけるカスケーディング、例えば、次のようなテーマがレイアウトやComponentのモジュールを変更することは許容します。
 
 ```css
 // Layout
 #l-header {
+  width: 100%;
 }
 
-.t-border #l-header {
-  border: 1px solid blue;
-}
-```
-
-## CSSプリプロセッサのExtend
-
-CSSプリプロセッサの多くが持つ、セレクタを継承するためのExtendは、原則そのモジュールで完結する継承以外では利用を禁止します。
-
-カテゴリーやレイヤー超えてExtendによる継承をおこなった場合、YASSの構成・設計は破綻し、カスケーディングルールも複雑にしてしまう可能性があるためです。
-
-以下は例外として、許容されるパターンをあげます。
-
-### モジュールで完結するExtend
-
-次のようなbuttonモジュールがあったとします。
-
-```scss
-.button {
-  display: inline-block;
-  padding: 0.5em 1em;
-  cursor: pointer;
-}
-.button--primary {
-  background-color: #CCAA00;
+.t-layout-fixed #l-header {
+  width: 1200px;
 }
 ```
 
-```html
-<a href="#save" class="button button--primary">Save</a>
-```
 
-YASSの構想では、このようなマルチクラスパターンを基本としていますが、次のようなExtendによってシングルクラスにすることができます。
-
-```scss
-.button {
-  display: inline-block;
-  padding: 0.5em 1em;
-  cursor: pointer;
-}
-.button--primary {
-  @extend .button
-  background-color: #CCAA00;
-  color: #FFFFFF;
-}
-.button--secondary {
-  @extend .button
-  background-color: #FFCC00;
-}
-
-// Compiled
-// .button,.button--primary {
-//   display: inline-block;
-//   padding: 0.5em 1em;
-//   cursor: pointer;
-// }
-// .button--primary {
-//   background-color: #CCAA00;
-// }
-```
-
-```html
-<a href="#save" class="button--primary">Save</a>
-```
-
-このようにモジュール内で完結をする限りは、管理が煩雑になりにくいため許容します。
-
-### ThemeによるExtend
-
-```html
-<a href="#" class="c-btn">ボタン</a>
-<h2 class="c-heding2">見出し</h2>
-```
-
-```scss
-.t-gradient-gray {
-  background-image: linear-gradient(top, #F2F2F2, #C9C9C9);
-}
-.c-btn {
-  @extend .t-gradient-gray
-}
-.c-heding2 {
-  @extend .t-gradient-gray
-}
-// Compiled
-// .c-btn {
-//   background-image: linear-gradient(top, #F2F2F2, #C9C9C9);
-// }
-// .c-heding2 {
-//   background-image: linear-gradient(top, #F2F2F2, #C9C9C9);
-// }
-```

@@ -1,3 +1,5 @@
+// placeholder selector
+
 // Media left
 //
 // modifiersはrightも共通
@@ -40,7 +42,7 @@
 // Media float left
 //
 // Markup:
-//<div class="c-media c-media--float">
+//<div class="c-media--float">
 //<div class="c-media__left">
 //<a href="#">
 //<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
@@ -50,14 +52,14 @@
 //<p class="c-media__heading">Middle aligned media</p>
 //<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
 //</div>
-//</div><!-- /.c-media -->
+//</div><!-- /.c-media--float -->
 //
 // Styleguide 7.3
 
 // Media float right
 //
 // Markup:
-//<div class="c-media c-media--float">
+//<div class="c-media--float">
 //<div class="c-media__right">
 //<a href="#">
 //<img lass="c-media__object" src="http://dummyimage.com/64x64/cccccc/666.png&amp;text=img(可変)" alt="" title="">
@@ -68,7 +70,7 @@
 //<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
 //<p class="c-media__text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
 //</div>
-//</div><!-- /.c-media -->
+//</div><!-- /.c-media--float -->
 //
 // Styleguide 7.4
 
@@ -113,6 +115,7 @@
 	vertical-align: bottom;
 }
 .c-media--float {
+	@include first_mt0;
 	.c-media__left {
 		float: left;
 		display: block; // Cancel '.c-media__left'

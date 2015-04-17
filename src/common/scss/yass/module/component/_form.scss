@@ -1,18 +1,6 @@
-// Input
-//
-// Markup:
-// <input type="text" class="c-form-control" placeholder="Text input">
-//
-// Styleguide 10.1
-
-// Textarea
-//
-// Markup:
-// <textarea class="c-form-control" rows="3" placeholder="Textarea"></textarea>
-//
-// Styleguide 10.2
-
-.c-form-control {
+// placeholder selector
+// input,textarea
+%def-form-text {
 	display: block;
 	width: 100%;
 	height: 34px;
@@ -25,47 +13,9 @@
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 	box-sizing: border-box;
 }
-textarea.c-form-control {
-	height: auto;
-}
 
-// Checkbox
-//
-// inlineとmodifiersは共有
-//
-// Markup:
-// <div class="c-checkbox">
-// <label>
-// <input type="checkbox" value="">
-// Option one is this and that&mdash;be sure to include why it's great
-// </label>
-// </div><!-- /.c-checkbox" -->
-// <div class="checkbox {$modifiers}">
-// <label>
-// <input type="checkbox" value="" disabled>
-// Option two is disabled
-// </label>
-// </div><!-- /.c-checkbox" -->
-//
-// .is-disabled - disabled
-//
-// Styleguide 10.2
-
-// Checkbox inline
-//
-// Markup:
-// <label class="c-checkbox-inline">
-// <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-// </label>
-// <label class="c-checkbox-inline">
-// <input type="checkbox" id="inlineCheckbox1" value="option1"> 2
-// </label>
-// <label class="c-checkbox-inline">
-// <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-// </label>
-//
-// Styleguide 10.3
-.c-checkbox {
+//checkbox,radiobtn
+%def-form-element {
 	position: relative;
 	display: block;
 	margin-top: 10px;
@@ -79,8 +29,12 @@ textarea.c-form-control {
 		cursor: pointer;
 	}
 }
-
-.c-checkbox-inline {
+%def-form-element__part {
+	position: absolute;
+	margin-left: -20px;
+	margin-top: 4px;
+}
+%def-form-element__inline {
 	position: relative;
 	display: inline-block;
 	padding-left: 20px;
@@ -89,26 +43,91 @@ textarea.c-form-control {
 	font-weight: normal;
 	cursor: pointer;
 }
+%def-form-element--disabled {
+	cursor: not-allowed;
+}
+
+// Input
+//
+// Markup:
+// <input type="text" class="c-form-control" placeholder="Text input">
+//
+// Styleguide 10.1
+input.c-form-control {
+	@extend %def-form-text;
+}
+
+// Textarea
+//
+// Markup:
+// <textarea class="c-form-control" rows="3" placeholder="Textarea"></textarea>
+//
+// Styleguide 10.2
+textarea.c-form-control {
+	@extend %def-form-text;
+	height: auto;
+}
+
+// Checkbox
+//
+// 非活性時はis-disabledを付与すること。<br>
+//
+// Markup:
+// <div class="c-checkbox">
+// <label>
+// <input type="checkbox" value="">
+// Option one is this and that&mdash;be sure to include why it's great
+// </label>
+// </div><!-- /.c-checkbox" -->
+// <div class="checkbox is-disabled">
+// <label>
+// <input type="checkbox" value="" disabled>
+// Option two is disabled
+// </label>
+// </div><!-- /.c-checkbox" -->
+//
+// Styleguide 10.2
+
+// Checkbox inline
+//
+// 非活性時はis-disabledを付与すること。<br>
+//
+// Markup:
+// <label class="c-checkbox-inline">
+// <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+// </label>
+// <label class="c-checkbox-inline">
+// <input type="checkbox" id="inlineCheckbox1" value="option1"> 2
+// </label>
+// <label class="c-checkbox-inline is-disabled">
+// <input type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+// </label>
+//
+// Styleguide 10.3
+.c-checkbox {
+	@extend %def-form-element;
+}
+.c-checkbox-inline {
+	@extend %def-form-element__inline;
+}
 .c-checkbox input[type="checkbox"],
 .c-checkbox-inline input[type="checkbox"] {
-	position: absolute;
-	margin-left: -20px;
-	margin-top: 4px;
+	@extend %def-form-element__part;
 }
 input[type="checkbox"][disabled],
 input[type="checkbox"].is-disabled {
-	cursor: not-allowed;
-}
-.c-checkbox-inline.is-disabled {
-	cursor: not-allowed;
+	@extend %def-form-element--disabled;
 }
 .c-checkbox.is-disabled label {
-	cursor: not-allowed;
+	@extend %def-form-element--disabled;
+}
+.c-checkbox-inline.is-disabled {
+	@extend %def-form-element--disabled;
 }
 
 // Radiobtn
 //
-// inlineとmodifiersは共有
+// 非活性時はis-disabledを付与すること。<br>
 //
 // Markup:
 // <div class="c-radio">
@@ -117,18 +136,18 @@ input[type="checkbox"].is-disabled {
 // Option two can be something else and selecting it will deselect option one
 // </label>
 // </div>
-// <div class="c-radio disabled">
+// <div class="c-radio is-disabled">
 // <label>
 // <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
 // Option three is disabled
 // </label>
 // </div>
 //
-// .is-disabled - disabled
-//
 // Styleguide 10.4
 
 // Radiobtn inline
+//
+// 非活性時はis-disabledを付与すること。<br>
 //
 // Markup:
 // <label class="c-radio-inline">
@@ -137,30 +156,30 @@ input[type="checkbox"].is-disabled {
 // <label class="c-radio-inline">
 // <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
 // </label>
-// <label class="c-radio-inline">
-// <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+// <label class="c-radio-inline is-disabled">
+// <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
 // </label>
 //
 // Styleguide 10.5
 .c-radio {
-	@extend .c-checkbox;
+	@extend %def-form-element;
 }
 .c-radio-inline {
-	@extend .c-checkbox-inline;
+	@extend %def-form-element__inline;
 }
 .c-radio  input[type="radio"],
 .c-radio-inline input[type="radio"] {
-	position: absolute;
-	margin-left: -20px;
-	margin-top: 4px;
+	@extend %def-form-element__part;
 }
 input[type="radio"][disabled],
 input[type="radio"].is-disabled {
-	cursor: not-allowed;
+	@extend %def-form-element--disabled;
 }
-.c-radio.disabled label {
-	cursor: not-allowed;
+.c-radio.is-disabled label {
+	@extend %def-form-element--disabled;
 }
-
+.c-checkbox-inline.is-disabled {
+	@extend %def-form-element--disabled;
+}
 
 

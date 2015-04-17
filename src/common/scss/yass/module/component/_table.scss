@@ -1,41 +1,5 @@
-// Table bascic
-//
-// Markup:
-// <table class="c-table {$modifiers}">
-// <thead>
-// <tr>
-// <th>thead ヘッダセル</th>
-// <th>thead セル</th>
-// <th>thead セル</th>
-// </tr>
-// </thead>
-// <tfoot>
-// <tr>
-// <th>tfoot ヘッダセル</th>
-// <td>tfoot セル</td>
-// <td>tfoot セル</td>
-// </tr>
-// </tfoot>
-// <tbody>
-// <tr>
-// <th>tbody ヘッダセル</th>
-// <td>tbody セル</td>
-// <td>tbody セル</td>
-// </tr>
-// <tr>
-// <th>tbody ヘッダセル</th>
-// <td>tbody セル</td>
-// <td>tbody セル</td>
-// </tr>
-// </tbody>
-// </table>
-//
-// .c-table--bordered - ボーダーテーブル
-//
-// Styleguide 9.1
-
-// c-table
-.c-table {
+// placeholder selector
+%def-table {
 	width: 100%;
 	max-width: 100%;
 	// Cells
@@ -73,7 +37,80 @@
 	}
 }
 
+// Table
+//
+// Markup:
+// <table class="c-table">
+// <thead>
+// <tr>
+// <th>thead ヘッダセル</th>
+// <th>thead セル</th>
+// <th>thead セル</th>
+// </tr>
+// </thead>
+// <tfoot>
+// <tr>
+// <th>tfoot ヘッダセル</th>
+// <td>tfoot セル</td>
+// <td>tfoot セル</td>
+// </tr>
+// </tfoot>
+// <tbody>
+// <tr>
+// <th>tbody ヘッダセル</th>
+// <td>tbody セル</td>
+// <td>tbody セル</td>
+// </tr>
+// <tr>
+// <th>tbody ヘッダセル</th>
+// <td>tbody セル</td>
+// <td>tbody セル</td>
+// </tr>
+// </tbody>
+// </table>
+//
+// Styleguide 9.1
+
+// c-table
+.c-table {
+	@extend %def-table;
+}
+
+// Table border
+//
+// Markup:
+// <table class="c-table--bordered">
+// <thead>
+// <tr>
+// <th>thead ヘッダセル</th>
+// <th>thead セル</th>
+// <th>thead セル</th>
+// </tr>
+// </thead>
+// <tfoot>
+// <tr>
+// <th>tfoot ヘッダセル</th>
+// <td>tfoot セル</td>
+// <td>tfoot セル</td>
+// </tr>
+// </tfoot>
+// <tbody>
+// <tr>
+// <th>tbody ヘッダセル</th>
+// <td>tbody セル</td>
+// <td>tbody セル</td>
+// </tr>
+// <tr>
+// <th>tbody ヘッダセル</th>
+// <td>tbody セル</td>
+// <td>tbody セル</td>
+// </tr>
+// </tbody>
+// </table>
+//
+// Styleguide 9.2
 .c-table--bordered {
+	@extend %def-table;
 	border: 1px solid #ddd;
 	> thead,
 	> tbody,

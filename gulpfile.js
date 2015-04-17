@@ -3,8 +3,8 @@ var rimraf = require('rimraf');
 var sass = require('gulp-ruby-sass');
 var gulpkss = require('gulp-kss');
 var pleeease = require('gulp-pleeease');
-//var plumber = require('gulp-plumber');
-var spritesmith = require('gulp.spritesmith');
+var plumber = require('gulp-plumber');
+//var spritesmith = require('gulp.spritesmith');
 
 //Clean out the current documentation folder
 gulp.task('clean', function (cb) {
@@ -12,15 +12,19 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('sass', function () {
-    return sass('src/common/scss/')
+    return sass('src/common/scss/',
+        {
+            compass: true
+        })
+        .pipe(plumber())
         .on('error', function (err) {
             console.error('Error!', err.message);
         })
         .pipe(gulp.dest('public/common/css'));
 });
 
-gulp.task('sprite', function () {
-    var spriteData = gulp.src('public/common/images/sprite/*.png')
+/*gulp.task('sprite', function () {
+    var spriteData = gulp.src('public/common/images/sprite*//*.png')
         .pipe(spritesmith({
             imgName: 'sprite.png',
             cssName: '_sprite.scss',
@@ -33,7 +37,7 @@ gulp.task('sprite', function () {
 
     spriteData.css
         .pipe(gulp.dest('src/common/scss/yass/mixins/'));
-});
+});*/
 
 gulp.task('kss', ['sass'], function () {
     gulp.src(['src/common/scss/**/*.scss'])
